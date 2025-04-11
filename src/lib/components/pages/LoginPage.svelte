@@ -1,7 +1,8 @@
 <script lang="ts">
   import Input from '../input/Input.svelte';
-  import Checkbox from '../checkbox/Checkbox.svelte';
-  import Button from '../button/Button.svelte';
+  import Checkbox from '../checkbox/checkbox.svelte';
+  import Button from '../button/button.svelte';
+  import { buttonField, checkboxField, forgotPasswordContainer, formField, formStyle, mainContainer, title } from './loginPage.css';
 
   let email = '';
   let password = '';
@@ -14,25 +15,24 @@
   }
 </script>
 
-<main>
-  <h1>ログイン</h1>
-
-  <form on:submit|preventDefault={handleLogin}>
-    <div>
-      <Input type="email" placeholder="メールアドレス" bindValue={email} />
+<main class={mainContainer}>
+  <h1 class={title}>ログイン</h1>
+  <form on:submit|preventDefault={handleLogin} class={formStyle}>
+    <div class={formField}>
+      <Input type="email" placeholder="メールアドレス" bind:value={email} />
     </div>
-    <div>
-      <Input type="password" placeholder="パスワード" bindValue={password} />
+    <div class={formField}>
+      <Input type="password" placeholder="パスワード" bind:value={password} />
     </div>
-    <div>
-      <Checkbox bindChecked={autoLogin} />
+    <div class={checkboxField}>
+      <Checkbox bind:checked={autoLogin} />
     </div>
-    <div>
+    <div class={buttonField}>
       <Button label="ログイン" />
     </div>
   </form>
 
-  <div>
+  <div class={forgotPasswordContainer}>
     <a href="/">パスワードをお忘れですか？</a>
   </div>
 </main>
