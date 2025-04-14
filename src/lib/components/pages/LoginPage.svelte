@@ -1,8 +1,9 @@
 <script lang="ts">
   import Input from '../input/Input.svelte';
   import Checkbox from '../checkbox/checkbox.svelte';
-  import Button from '../button/button.svelte';
+
   import { buttonField, checkboxField, forgotPasswordContainer, formField, formStyle, mainContainer, title } from './loginPage.css';
+  import Button from '../button/Button.svelte';
 
   let email = '';
   let password = '';
@@ -33,6 +34,6 @@
   </form>
 
   <div class={forgotPasswordContainer}>
-    <a href="/">パスワードをお忘れですか？</a>
+    <a href="/recipe">recipe</a>
   </div>
 </main>
