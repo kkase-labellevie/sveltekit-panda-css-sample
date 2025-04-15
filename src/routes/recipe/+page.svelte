@@ -22,7 +22,7 @@
     ]
   };
 
-  /** このように　recipe を受け渡すことも可能 */
+  /** このように　recipe を受け渡すことも可能, このコンテキストは小要素にしか受け渡せない (RecipeCard, RecipeItem) */
   setContext('recipe', sampleRecipe);
 </script>
 
