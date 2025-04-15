@@ -1,6 +1,7 @@
 <script lang="ts">
   import RecipeCard from '$lib/components/card/RecipeCard.svelte';
   import RecipeItem from '$lib/components/card/RecipeItem.svelte';
+  import { setContext } from 'svelte';
 
   const sampleRecipe = {
     title: '簡単パスタ',
@@ -20,18 +21,16 @@
       'パスタと和える'
     ]
   };
+
+  /** このように　recipe を受け渡すことも可能 */
+  setContext('recipe', sampleRecipe);
 </script>
 
 <div class="container mx-auto p-4">
   <h1 class="text-2xl font-bold mb-4">レシピサンプル</h1>
 
   <div class="space-y-4">
-    <RecipeCard variant="default">
-      <RecipeItem {...sampleRecipe} variant="default" />
-    </RecipeCard>
-
-    <RecipeCard variant="dark">
-      <RecipeItem {...sampleRecipe} variant="dark" />
-    </RecipeCard>
+    <RecipeCard variant="default" recipe={sampleRecipe} />
+    <RecipeCard variant="dark" recipe={sampleRecipe} />
   </div>
 </div>

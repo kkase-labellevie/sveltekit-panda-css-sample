@@ -1,5 +1,6 @@
 <script lang="ts">
   import { css } from 'styled-system/css';
+  import { getContext } from 'svelte';
 
   export let variant: 'default' | 'dark' = 'default';
 
@@ -64,6 +65,13 @@
       }
     }
   });
+
+  /** このように　recipe を受け取ることも可能 */
+  const recipe = getContext('recipe') as {
+    title: string;
+    ingredients: string[];
+    instructions: string[];
+  };
 
   export let title: string;
   export let ingredients: string[];

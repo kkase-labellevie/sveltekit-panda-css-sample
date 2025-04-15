@@ -1,5 +1,6 @@
 <script lang="ts">
   import { cva } from 'styled-system/css';
+  import RecipeItem from './RecipeItem.svelte';
 
   const cardVariants = cva({
     base: {
@@ -38,8 +39,13 @@
 
   export let variant: 'default' | 'dark' = 'default';
   export let size: 'default' | 'large' = 'default';
+  export let recipe: {
+    title: string;
+    ingredients: string[];
+    instructions: string[];
+  };
 </script>
 
 <div class={cardVariants({ variant, size })}>
-  <slot />
+  <RecipeItem { ...recipe } />
 </div>
