@@ -21,49 +21,50 @@
     }
   });
 
-  const commonListStyles = {
+  const baseCardStyles = {
     listStyle: 'none',
     padding: '0',
-    '& li': {
-      padding: '0.5rem',
-      margin: '0.25rem 0',
-      borderRadius: '0.25rem',
-      borderBottom: '1px solid',
-      transition: 'all 0.2s',
-      cursor: 'pointer',
-      backgroundColor: 'transparent',
-      _last: {
-        borderBottom: 'none'
-      },
-      _hover: {
-        transform: 'translateX(4px)'
-      }
+  };
+
+  const defaultListStyle = {
+    padding: '0.5rem',
+    margin: '0.25rem 0',
+    borderRadius: '0.25rem',
+    borderBottom: '1px solid',
+    transition: 'all 0.2s',
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    borderColor: 'gray.200',
+    _hover: {
+      transform: 'translateX(4px)',
+      backgroundColor: 'gray.100'
     }
   };
 
-  const defaultListStyles = css({
-    ...commonListStyles,
-    '& li': {
-      ...commonListStyles['& li'],
-      borderColor: 'gray.200',
-      _hover: {
-        ...commonListStyles['& li']._hover,
-        backgroundColor: 'gray.100'
-      }
+  const darkListStyle = {
+    padding: '0.5rem',
+    margin: '0.25rem 0',
+    borderRadius: '0.25rem',
+    borderBottom: '1px solid',
+    transition: 'all 0.2s',
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    borderColor: 'gray.700',
+    _hover: {
+      transform: 'translateX(4px)',
+      backgroundColor: 'gray.700',
+      boxShadow: '0 0 10px rgba(0,0,0,0.3)'
     }
+  };
+
+  const defaultCardStyles = css({
+    ...baseCardStyles,
+    '& li': defaultListStyle,
   });
 
-  const darkListStyles = css({
-    ...commonListStyles,
-    '& li': {
-      ...commonListStyles['& li'],
-      borderColor: 'gray.700',
-      _hover: {
-        ...commonListStyles['& li']._hover,
-        backgroundColor: 'gray.700',
-        boxShadow: '0 0 10px rgba(0,0,0,0.3)'
-      }
-    }
+  const darkCardStyles = css({
+    ...baseCardStyles,
+    '& li': darkListStyle,
   });
 
   /** このように　recipe を受け取ることも可能 */
@@ -82,7 +83,7 @@
   <h3>{title}</h3>
   <div>
     <h4>材料:</h4>
-    <ul class={variant === 'dark' ? darkListStyles : defaultListStyles}>
+    <ul class={variant === 'dark' ? darkCardStyles : defaultCardStyles}>
       {#each ingredients as ingredient}
         <li>{ingredient}</li>
       {/each}
@@ -90,7 +91,7 @@
   </div>
   <div>
     <h4>手順:</h4>
-    <ul class={variant === 'dark' ? darkListStyles : defaultListStyles}>
+    <ul class={variant === 'dark' ? darkCardStyles : defaultCardStyles}>
       {#each instructions as instruction}
         <li>{instruction}</li>
       {/each}
