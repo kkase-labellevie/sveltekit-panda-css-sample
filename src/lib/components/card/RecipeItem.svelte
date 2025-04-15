@@ -20,7 +20,7 @@
     }
   });
 
-  const defaultListStyles = css({
+  const commonListStyles = {
     listStyle: 'none',
     padding: '0',
     '& li': {
@@ -28,7 +28,6 @@
       margin: '0.25rem 0',
       borderRadius: '0.25rem',
       borderBottom: '1px solid',
-      borderColor: 'gray.200',
       transition: 'all 0.2s',
       cursor: 'pointer',
       backgroundColor: 'transparent',
@@ -36,30 +35,31 @@
         borderBottom: 'none'
       },
       _hover: {
-        backgroundColor: 'gray.100',
         transform: 'translateX(4px)'
+      }
+    }
+  };
+
+  const defaultListStyles = css({
+    ...commonListStyles,
+    '& li': {
+      ...commonListStyles['& li'],
+      borderColor: 'gray.200',
+      _hover: {
+        ...commonListStyles['& li']._hover,
+        backgroundColor: 'gray.100'
       }
     }
   });
 
   const darkListStyles = css({
-    listStyle: 'none',
-    padding: '0',
+    ...commonListStyles,
     '& li': {
-      padding: '0.5rem',
-      margin: '0.25rem 0',
-      borderRadius: '0.25rem',
-      borderBottom: '1px solid',
+      ...commonListStyles['& li'],
       borderColor: 'gray.700',
-      transition: 'all 0.2s',
-      cursor: 'pointer',
-      backgroundColor: 'transparent',
-      _last: {
-        borderBottom: 'none'
-      },
       _hover: {
+        ...commonListStyles['& li']._hover,
         backgroundColor: 'gray.700',
-        transform: 'translateX(4px)',
         boxShadow: '0 0 10px rgba(0,0,0,0.3)'
       }
     }
